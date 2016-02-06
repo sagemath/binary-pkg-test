@@ -1,63 +1,46 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <cstdlib>
+#include "library.h"
 
-using namespace std;
 
-bool writeFile()
+// Examples of hardcoded strings that are sometimes found in binaries
+
+// Filename as null-terminated string
+const static std::string root = ROOT_PATH;
+
+// Entry in a search path with IFS
+const static std::string root_with_separator = "/foo:" ROOT_PATH ":/bar";
+
+// Install prefix
+const static std::string prefix = PREFIX_PATH;
+
+// Entry in a search path with IFS
+const static std::string prefix_with_separator = "/foo:" PREFIX_PATH ":/bar";
+
+
+
+int main(void)
 {
-    ofstream testFile ("/tmp/cppTestFile");
-    cout << "Now we will write some text to fire /tmp/cppTestFile" << endl;
-    if(testFile.is_open())
-    {
-        testFile << "This is basic line,\n";
-        testFile << "Created by C++ Development Assistant\n";
-        testFile.close();
-        cout << "Text has been written to file successfully" << endl;
-    }
-    else
-    {
-        cerr << "Unable to open file";
-        return false;
-    }
-    return true;
-}
+  using std::cout;
+  using std::endl;
+  cout << "Root path: "
+       << root << endl;
+  cout << "Root path with separators: "
+       << root_with_separator << endl;
+  cout << "Root path from shared library: "
+       << get_path_root() << endl;
+  cout << "Root path with separators from shared library: "
+       << get_path_root_with_separator() << endl;
+  cout << "Prefix path: "
+       << prefix << endl;
+  cout << "Prefix path with separators: "
+       << prefix_with_separator << endl;
+  cout << "Prefix path from shared library: "
+       << get_path_prefix() << endl;
+  cout << "Prefix path with separators from shared library: "
+       << get_path_prefix_with_separator() << endl;
 
-bool readFile()
-{
-    ifstream testFile ("/tmp/cppTestFile");
-    cout << "Read text from file /tmp/cppTestFile" << endl;
-    if(testFile.is_open())
-    {
-        string line;
-        while (getline(testFile,line))
-        {
-            cout << line << endl;
-        }
-        cout << "Reading operation was successful" << endl;
-    }
-    else
-    {
-        cerr << "Unable to open file" << endl;
-        return false;
-    }
-    return true;
-}
-
-int main()
-{
-
-    if (!writeFile())
-    {
-        cerr << "Could not create and write to file" << endl;
-        exit(1);
-    }
-
-    if(!readFile())
-    {
-        cerr << "Could not read from file" << endl;
-        exit(1);
-    }
+  return EXIT_SUCCESS;
 }
        

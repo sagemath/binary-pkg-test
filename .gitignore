@@ -25,6 +25,9 @@ Makefile.in
 /config/
 /config.h.in
 /configure
+/config.guess
+/config.sub
+/ltmain.sh
 *~
 /build*/
 m4
@@ -36,13 +39,16 @@ libtool
 *.gcno
 *.gcda
 cproject.log
+.libs
 
 # Bootstrapped files
-compile
-INSTALL
-depcomp
-install-sh
-main
-missing
+/compile
+/INSTALL
+/depcomp
+/install-sh
+/missing
 
 
+# Output
+/main
+/local
