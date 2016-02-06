@@ -37,3 +37,12 @@ libtool
 *.gcda
 cproject.log
 
+# Bootstrapped files
+compile
+INSTALL
+depcomp
+install-sh
+main
+missing
+
+
