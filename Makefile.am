@@ -5,5 +5,4 @@ libhardcodedpath_la_SOURCES = library.cpp
 
 bin_PROGRAMS = main
 main_SOURCES = main.cpp
-main_LDFLAGS = -lhardcodedpath
-
+main_LDADD = libhardcodedpath.la
